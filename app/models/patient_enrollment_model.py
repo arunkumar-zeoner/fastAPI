@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, BigInteger, String, Enum, DECIMAL, DateTime, TIMESTAMP
-from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 import enum
 
 Base = declarative_base()

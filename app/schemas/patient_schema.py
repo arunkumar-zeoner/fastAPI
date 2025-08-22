@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Any, Dict, List, Optional
 from datetime import datetime, date
 
@@ -9,8 +9,9 @@ class PatientRequest(BaseModel):
     page_size: Optional[int] = Field(10, ge=1, le=100, description="Number of patients per page")
     program_id: Optional[str] = Field(None, description="Program filter")
 
-    @validator("pid", pre=True)
+    @field_validator("pid", mode="before")
     def empty_string_to_none(cls, v):
+        """Convert empty string or None to None and cast to int if possible"""
         if v == "" or v is None:
             return None
         return int(v)

@@ -47,7 +47,7 @@ def create_success_response(
         statusCode=status_code,
         message=message,
         data=data
-    ).dict(exclude_none=True)
+    ).model_dump(exclude_none=True)
     
     return JSONResponse(status_code=status_code, content=content)
 
@@ -63,6 +63,6 @@ def create_error_response(
         message=message,
         errorCode=error_code,
         details=details
-    ).dict(exclude_none=True)
+    ).model_dump(exclude_none=True)
     
     return JSONResponse(status_code=status_code, content=content)

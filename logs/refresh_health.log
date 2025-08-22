@@ -1,1967 +1,348 @@
-[2025-08-21 11:48:38,429] [INFO] Starting token and email verification
-[2025-08-21 11:48:38,434] [INFO] Validating ID token
-[2025-08-21 11:48:38,436] [INFO] Fetching JWKS from Cognito
-[2025-08-21 11:48:39,222] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 11:48:39,222] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 11:48:51,962] [INFO] Starting token and email verification
-[2025-08-21 11:48:51,963] [INFO] Validating ID token
-[2025-08-21 11:48:51,964] [INFO] Fetching JWKS from Cognito
-[2025-08-21 11:48:52,652] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 11:48:52,652] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 11:48:52,675] [INFO] Processing individual patient request for site: dev, pid: 2
-[2025-08-21 11:48:54,711] [ERROR] Error in get_single_patient_data_optimized: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '127.0.0.1'")
+[2025-08-22 12:08:24,665] [INFO] Token received: gIkTNkQ3lW7Nyx5x1cO3uI9MH3-pcg27DO9Vc9E0gniTkJLJ..., site: dev
+[2025-08-22 12:08:26,704] [ERROR] Database error: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '127.0.0.1'")
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 11:48:54,711] [ERROR] Error in get_patient_details: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '127.0.0.1'")
+[2025-08-22 12:21:13,265] [INFO] Token received: gIkTNkQ3lW7Nyx5x1cO3uI9MH3-pcg27DO9Vc9E0gniTkJLJ..., site: dev
+[2025-08-22 12:21:16,066] [INFO] Authenticating with Cognito
+[2025-08-22 12:21:19,215] [INFO] Cognito authentication successful
+[2025-08-22 12:21:30,933] [INFO] Starting token and email verification
+[2025-08-22 12:21:30,934] [INFO] Validating ID token
+[2025-08-22 12:21:30,935] [INFO] Fetching JWKS from Cognito
+[2025-08-22 12:21:31,773] [INFO] Token validated for email: prakash@zeoner.com
+[2025-08-22 12:21:31,775] [INFO] Email verified successfully: prakash@zeoner.com
+[2025-08-22 12:21:31,782] [INFO] payload: {'site': 'dev', 'pid': None, 'page': 2, 'page_size': 10, 'program_id': None}
+[2025-08-22 12:21:31,784] [INFO] Processing batch request for site: dev, page: 2, page_size: 10
+[2025-08-22 12:21:32,548] [INFO] Fetching data for 10 patients in batch...
+[2025-08-22 12:21:32,549] [INFO] Fetching enrollment for 10 patients in batch
+[2025-08-22 12:21:40,412] [INFO] Patient details fetched successfully for email: prakash@zeoner.com
+[2025-08-22 12:49:40,165] [INFO] Token received: test-token..., site: dev
+[2025-08-22 12:49:42,201] [ERROR] Database error: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '127.0.0.1'")
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 11:48:54,711] [ERROR] Error fetching patient details: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '127.0.0.1'")
+[2025-08-22 12:49:43,245] [INFO] Starting token and email verification
+[2025-08-22 12:49:43,245] [INFO] Validating ID token
+[2025-08-22 12:49:43,246] [INFO] Fetching JWKS from Cognito
+[2025-08-22 12:49:44,249] [ERROR] JWT validation error: Error decoding token headers.
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 200, in get_unverified_header
+    headers = jws.get_unverified_headers(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 113, in get_unverified_headers
+    return get_unverified_header(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 94, in get_unverified_header
+    header, claims, signing_input, signature = _load(token)
+                                               ~~~~~^^^^^^^
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 184, in _load
+    raise JWSError("Not enough segments")
+jose.exceptions.JWSError: Not enough segments
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 66, in validate_id_token
+    payload = verify_signature(id_token, jwks_keys)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 41, in verify_signature
+    headers = jwt.get_unverified_header(id_token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 202, in get_unverified_header
+    raise JWTError("Error decoding token headers.")
+jose.exceptions.JWTError: Error decoding token headers.
+[2025-08-22 12:51:22,279] [INFO] Token received: test-token..., site: dev
+[2025-08-22 12:51:25,058] [WARNING] Invalid OpenEMR token
+[2025-08-22 12:51:25,576] [INFO] Starting token and email verification
+[2025-08-22 12:51:25,576] [INFO] Validating ID token
+[2025-08-22 12:51:25,576] [INFO] Fetching JWKS from Cognito
+[2025-08-22 12:51:26,410] [ERROR] JWT validation error: Error decoding token headers.
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 200, in get_unverified_header
+    headers = jws.get_unverified_headers(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 113, in get_unverified_headers
+    return get_unverified_header(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 94, in get_unverified_header
+    header, claims, signing_input, signature = _load(token)
+                                               ~~~~~^^^^^^^
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 184, in _load
+    raise JWSError("Not enough segments")
+jose.exceptions.JWSError: Not enough segments
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 66, in validate_id_token
+    payload = verify_signature(id_token, jwks_keys)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 41, in verify_signature
+    headers = jwt.get_unverified_header(id_token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 202, in get_unverified_header
+    raise JWTError("Error decoding token headers.")
+jose.exceptions.JWTError: Error decoding token headers.
+[2025-08-22 12:55:23,488] [INFO] Token received: test-token..., site: dev
+[2025-08-22 12:55:26,267] [WARNING] Invalid OpenEMR token
+[2025-08-22 12:55:26,812] [INFO] Starting token and email verification
+[2025-08-22 12:55:26,813] [INFO] Validating ID token
+[2025-08-22 12:55:26,814] [INFO] Fetching JWKS from Cognito
+[2025-08-22 12:55:27,607] [ERROR] JWT validation error: Error decoding token headers.
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 200, in get_unverified_header
+    headers = jws.get_unverified_headers(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 113, in get_unverified_headers
+    return get_unverified_header(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 94, in get_unverified_header
+    header, claims, signing_input, signature = _load(token)
+                                               ~~~~~^^^^^^^
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 184, in _load
+    raise JWSError("Not enough segments")
+jose.exceptions.JWSError: Not enough segments
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 66, in validate_id_token
+    payload = verify_signature(id_token, jwks_keys)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 41, in verify_signature
+    headers = jwt.get_unverified_header(id_token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 202, in get_unverified_header
+    raise JWTError("Error decoding token headers.")
+jose.exceptions.JWTError: Error decoding token headers.
+[2025-08-22 12:59:28,568] [INFO] Token received: test-token..., site: dev
+[2025-08-22 12:59:31,289] [WARNING] Invalid OpenEMR token
+[2025-08-22 12:59:31,814] [INFO] Starting token and email verification
+[2025-08-22 12:59:31,815] [INFO] Validating ID token
+[2025-08-22 12:59:31,816] [INFO] Fetching JWKS from Cognito
+[2025-08-22 12:59:32,629] [ERROR] JWT validation error: Error decoding token headers.
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 200, in get_unverified_header
+    headers = jws.get_unverified_headers(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 113, in get_unverified_headers
+    return get_unverified_header(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 94, in get_unverified_header
+    header, claims, signing_input, signature = _load(token)
+                                               ~~~~~^^^^^^^
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 184, in _load
+    raise JWSError("Not enough segments")
+jose.exceptions.JWSError: Not enough segments
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 66, in validate_id_token
+    payload = verify_signature(id_token, jwks_keys)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 41, in verify_signature
+    headers = jwt.get_unverified_header(id_token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 202, in get_unverified_header
+    raise JWTError("Error decoding token headers.")
+jose.exceptions.JWTError: Error decoding token headers.
+[2025-08-22 13:01:13,252] [INFO] Token received: test-token..., site: dev
+[2025-08-22 13:01:15,972] [WARNING] Invalid OpenEMR token
+[2025-08-22 13:01:16,524] [INFO] Starting token and email verification
+[2025-08-22 13:01:16,528] [INFO] Validating ID token
+[2025-08-22 13:01:16,529] [INFO] Fetching JWKS from Cognito
+[2025-08-22 13:01:17,444] [ERROR] JWT validation error: Error decoding token headers.
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 200, in get_unverified_header
+    headers = jws.get_unverified_headers(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 113, in get_unverified_headers
+    return get_unverified_header(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 94, in get_unverified_header
+    header, claims, signing_input, signature = _load(token)
+                                               ~~~~~^^^^^^^
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 184, in _load
+    raise JWSError("Not enough segments")
+jose.exceptions.JWSError: Not enough segments
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 66, in validate_id_token
+    payload = verify_signature(id_token, jwks_keys)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 41, in verify_signature
+    headers = jwt.get_unverified_header(id_token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 202, in get_unverified_header
+    raise JWTError("Error decoding token headers.")
+jose.exceptions.JWTError: Error decoding token headers.
+[2025-08-22 13:04:22,936] [INFO] Token received: test-token..., site: dev
+[2025-08-22 13:04:25,712] [WARNING] Invalid OpenEMR token
+[2025-08-22 13:04:26,212] [INFO] Starting token and email verification
+[2025-08-22 13:04:26,213] [INFO] Validating ID token
+[2025-08-22 13:04:26,213] [INFO] Fetching JWKS from Cognito
+[2025-08-22 13:04:27,077] [ERROR] JWT validation error: Error decoding token headers.
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 200, in get_unverified_header
+    headers = jws.get_unverified_headers(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 113, in get_unverified_headers
+    return get_unverified_header(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 94, in get_unverified_header
+    header, claims, signing_input, signature = _load(token)
+                                               ~~~~~^^^^^^^
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 184, in _load
+    raise JWSError("Not enough segments")
+jose.exceptions.JWSError: Not enough segments
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 66, in validate_id_token
+    payload = verify_signature(id_token, jwks_keys)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 41, in verify_signature
+    headers = jwt.get_unverified_header(id_token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 202, in get_unverified_header
+    raise JWTError("Error decoding token headers.")
+jose.exceptions.JWTError: Error decoding token headers.
+[2025-08-22 13:08:26,412] [INFO] Token received: test-token..., site: dev
+[2025-08-22 13:08:29,191] [WARNING] Invalid OpenEMR token
+[2025-08-22 13:08:29,717] [INFO] Starting token and email verification
+[2025-08-22 13:08:29,718] [INFO] Validating ID token
+[2025-08-22 13:08:29,719] [INFO] Fetching JWKS from Cognito
+[2025-08-22 13:08:30,528] [ERROR] JWT validation error: Error decoding token headers.
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 200, in get_unverified_header
+    headers = jws.get_unverified_headers(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 113, in get_unverified_headers
+    return get_unverified_header(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 94, in get_unverified_header
+    header, claims, signing_input, signature = _load(token)
+                                               ~~~~~^^^^^^^
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 184, in _load
+    raise JWSError("Not enough segments")
+jose.exceptions.JWSError: Not enough segments
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 66, in validate_id_token
+    payload = verify_signature(id_token, jwks_keys)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 41, in verify_signature
+    headers = jwt.get_unverified_header(id_token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 202, in get_unverified_header
+    raise JWTError("Error decoding token headers.")
+jose.exceptions.JWTError: Error decoding token headers.
+[2025-08-22 13:14:04,739] [INFO] Token received: gIkTNkQ3lW7Nyx5x1cO3uI9MH3-pcg27DO9Vc9E0gniTkJLJ..., site: dev
+[2025-08-22 13:14:24,105] [ERROR] Database error: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 64] The specified network name is no longer available)')
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-08-22 13:14:25,182] [INFO] Starting token and email verification
+[2025-08-22 13:14:25,183] [INFO] Validating ID token
+[2025-08-22 13:14:25,184] [INFO] Fetching JWKS from Cognito
+[2025-08-22 13:14:26,003] [ERROR] JWT validation error: Error decoding token headers.
 Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 527, in _connect
-    self._reader, self._writer = await \
-                                 ^^^^^^^
-    ...<4 lines>...
-            timeout=self.connect_timeout)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
-    return await fut
-           ^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 88, in _open_connection
-    transport, _ = await loop.create_connection(
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        lambda: protocol, host, port, **kwds)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Python313\Lib\asyncio\base_events.py", line 1160, in create_connection
-    raise exceptions[0]
-  File "C:\Python313\Lib\asyncio\base_events.py", line 1135, in create_connection
-    sock = await self._connect_sock(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-        exceptions, addrinfo, laddr_infos)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Python313\Lib\asyncio\base_events.py", line 1038, in _connect_sock
-    await self.sock_connect(sock, address)
-  File "C:\Python313\Lib\asyncio\selector_events.py", line 641, in sock_connect
-    return await fut
-           ^^^^^^^^^
-  File "C:\Python313\Lib\asyncio\selector_events.py", line 681, in _sock_connect_cb
-    raise OSError(err, f'Connect call failed {address}')
-ConnectionRefusedError: [Errno 10061] Connect call failed ('127.0.0.1', 3307)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
 
-The above exception was the direct cause of the following exception:
+During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
-    self._dbapi_connection = engine.raw_connection()
-                             ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
-    return self.pool.connect()
-           ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
-    return _ConnectionFairy._checkout(self)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
-    rec = pool._do_get()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
-    return self._create_connection()
-           ~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
-    return _ConnectionRecord(self)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
-    self.__connect()
-    ~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
-    self.dbapi_connection = connection = pool._invoke_creator(self)
-                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
-    return dialect.connect(*cargs, **cparams)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
-    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 164, in connect
-    await_only(creator_fn(*arg, **kw)),
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
-    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
-    value = await result
-            ^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 75, in _connect
-    await conn._connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 563, in _connect
-    raise OperationalError(
-    ...<2 lines>...
-    ) from e
-pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1'")
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 200, in get_unverified_header
+    headers = jws.get_unverified_headers(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 113, in get_unverified_headers
+    return get_unverified_header(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 94, in get_unverified_header
+    header, claims, signing_input, signature = _load(token)
+                                               ~~~~~^^^^^^^
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 184, in _load
+    raise JWSError("Not enough segments")
+jose.exceptions.JWSError: Not enough segments
 
-The above exception was the direct cause of the following exception:
+During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\routers\patient_route.py", line 22, in patient_details_post
-    result = await get_patient_details(payload=payload.dict(), db=db)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\controllers\patient_controller.py", line 56, in get_patient_details
-    result = await get_single_patient_data_optimized(db, event, context, pid)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\services\patients\patient_details_service.py", line 809, in get_single_patient_data_optimized
-    result = await db.execute(text("""
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<4 lines>...
-    """), {"pid": pid})
-    ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 463, in execute
-    result = await greenlet_spawn(
-             ^^^^^^^^^^^^^^^^^^^^^
-    ...<6 lines>...
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 201, in greenlet_spawn
-    result = context.throw(*sys.exc_info())
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
-    return self._execute_internal(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        statement,
-        ^^^^^^^^^^
-    ...<4 lines>...
-        _add_event=_add_event,
-        ^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2241, in _execute_internal
-    conn = self._connection_for_bind(bind)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2110, in _connection_for_bind
-    return trans._connection_for_bind(engine, execution_options)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<string>", line 2, in _connection_for_bind
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
-    ret_value = fn(self, *arg, **kw)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1189, in _connection_for_bind
-    conn = bind.connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3277, in connect
-    return self._connection_cls(self)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
-    Connection._handle_dbapi_exception_noconnection(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        err, dialect, engine
-        ^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2440, in _handle_dbapi_exception_noconnection
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
-    self._dbapi_connection = engine.raw_connection()
-                             ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
-    return self.pool.connect()
-           ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
-    return _ConnectionFairy._checkout(self)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
-    rec = pool._do_get()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
-    return self._create_connection()
-           ~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
-    return _ConnectionRecord(self)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
-    self.__connect()
-    ~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
-    self.dbapi_connection = connection = pool._invoke_creator(self)
-                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
-    return dialect.connect(*cargs, **cparams)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
-    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 164, in connect
-    await_only(creator_fn(*arg, **kw)),
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
-    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
-    value = await result
-            ^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 75, in _connect
-    await conn._connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 563, in _connect
-    raise OperationalError(
-    ...<2 lines>...
-    ) from e
-sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '127.0.0.1'")
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 11:49:17,427] [INFO] Starting token and email verification
-[2025-08-21 11:49:17,428] [INFO] Validating ID token
-[2025-08-21 11:49:17,428] [INFO] Fetching JWKS from Cognito
-[2025-08-21 11:49:18,119] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 11:49:18,120] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 11:49:18,121] [INFO] Processing individual patient request for site: dev, pid: 2
-[2025-08-21 11:49:21,536] [INFO] Fetching data for single patient 2...
-[2025-08-21 11:49:21,536] [INFO] Fetching enrollment for 1 patients in batch
-[2025-08-21 11:49:21,537] [ERROR] Error in get_batch_enrollment_status: type object 'PatientEnrollment' has no attribute 'patient'
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 66, in validate_id_token
+    payload = verify_signature(id_token, jwks_keys)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 41, in verify_signature
+    headers = jwt.get_unverified_header(id_token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 202, in get_unverified_header
+    raise JWTError("Error decoding token headers.")
+jose.exceptions.JWTError: Error decoding token headers.
+[2025-08-22 13:15:53,768] [INFO] Token received: gIkTNkQ3lW7Nyx5x1cO3uI9MH3-pcg27DO9Vc9E0gniTkJLJ..., site: dev
+[2025-08-22 13:15:56,519] [INFO] Authenticating with Cognito
+[2025-08-22 13:15:59,251] [INFO] Cognito authentication successful
+[2025-08-22 13:15:59,766] [INFO] Starting token and email verification
+[2025-08-22 13:15:59,767] [INFO] Validating ID token
+[2025-08-22 13:15:59,768] [INFO] Fetching JWKS from Cognito
+[2025-08-22 13:16:00,660] [ERROR] JWT validation error: Error decoding token headers.
 Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\services\patients\patient_details_service.py", line 470, in get_batch_enrollment_status
-    joinedload(PatientEnrollment.patient),
-               ^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: type object 'PatientEnrollment' has no attribute 'patient'
-[2025-08-21 11:49:23,379] [ERROR] Error in get_single_patient_data_optimized: Invalid format string
-[2025-08-21 11:49:23,379] [ERROR] Error in get_patient_details: Invalid format string
-[2025-08-21 11:49:23,380] [WARNING] Validation error: Invalid format string
-[2025-08-21 12:04:49,871] [INFO] Starting token and email verification
-[2025-08-21 12:04:49,874] [INFO] Validating ID token
-[2025-08-21 12:04:49,874] [INFO] Fetching JWKS from Cognito
-[2025-08-21 12:04:50,710] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 12:04:50,711] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 12:04:50,717] [INFO] Processing individual patient request for site: dev, pid: 2
-[2025-08-21 12:05:18,947] [ERROR] Error in get_single_patient_data_optimized: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 12:05:18,948] [ERROR] Error in get_patient_details: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 12:05:18,949] [ERROR] Error fetching patient details: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 657, in _read_bytes
-    data = await self._reader.readexactly(num_bytes)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Python313\Lib\asyncio\streams.py", line 769, in readexactly
-    await self._wait_for_data('readexactly')
-  File "C:\Python313\Lib\asyncio\streams.py", line 539, in _wait_for_data
-    await self._waiter
-  File "C:\Python313\Lib\asyncio\selector_events.py", line 1005, in _read_ready__data_received
-    data = self._sock.recv(self.max_size)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
 
-The above exception was the direct cause of the following exception:
+During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
-    self._dbapi_connection = engine.raw_connection()
-                             ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
-    return self.pool.connect()
-           ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
-    return _ConnectionFairy._checkout(self)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
-    rec = pool._do_get()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
-    return self._create_connection()
-           ~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
-    return _ConnectionRecord(self)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
-    self.__connect()
-    ~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
-    self.dbapi_connection = connection = pool._invoke_creator(self)
-                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
-    return dialect.connect(*cargs, **cparams)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
-    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 164, in connect
-    await_only(creator_fn(*arg, **kw)),
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
-    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
-    value = await result
-            ^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 75, in _connect
-    await conn._connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 539, in _connect
-    await self._get_server_information()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 1048, in _get_server_information
-    packet = await self._read_packet()
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 609, in _read_packet
-    packet_header = await self._read_bytes(4)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 665, in _read_bytes
-    raise OperationalError(CR.CR_SERVER_LOST, msg) from e
-pymysql.err.OperationalError: (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 200, in get_unverified_header
+    headers = jws.get_unverified_headers(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 113, in get_unverified_headers
+    return get_unverified_header(token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 94, in get_unverified_header
+    header, claims, signing_input, signature = _load(token)
+                                               ~~~~~^^^^^^^
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jws.py", line 184, in _load
+    raise JWSError("Not enough segments")
+jose.exceptions.JWSError: Not enough segments
 
-The above exception was the direct cause of the following exception:
+During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\routers\patient_route.py", line 22, in patient_details_post
-    result = await get_patient_details(payload=payload.dict(), db=db)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\controllers\patient_controller.py", line 56, in get_patient_details
-    result = await get_single_patient_data_optimized(db, event, context, pid)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\services\patients\patient_details_service.py", line 809, in get_single_patient_data_optimized
-    result = await db.execute(text("""
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<4 lines>...
-    """), {"pid": pid})
-    ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 463, in execute
-    result = await greenlet_spawn(
-             ^^^^^^^^^^^^^^^^^^^^^
-    ...<6 lines>...
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 201, in greenlet_spawn
-    result = context.throw(*sys.exc_info())
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
-    return self._execute_internal(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        statement,
-        ^^^^^^^^^^
-    ...<4 lines>...
-        _add_event=_add_event,
-        ^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2241, in _execute_internal
-    conn = self._connection_for_bind(bind)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2110, in _connection_for_bind
-    return trans._connection_for_bind(engine, execution_options)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<string>", line 2, in _connection_for_bind
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
-    ret_value = fn(self, *arg, **kw)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1189, in _connection_for_bind
-    conn = bind.connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3277, in connect
-    return self._connection_cls(self)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
-    Connection._handle_dbapi_exception_noconnection(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        err, dialect, engine
-        ^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2440, in _handle_dbapi_exception_noconnection
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
-    self._dbapi_connection = engine.raw_connection()
-                             ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
-    return self.pool.connect()
-           ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
-    return _ConnectionFairy._checkout(self)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
-    rec = pool._do_get()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
-    return self._create_connection()
-           ~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
-    return _ConnectionRecord(self)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
-    self.__connect()
-    ~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
-    self.dbapi_connection = connection = pool._invoke_creator(self)
-                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
-    return dialect.connect(*cargs, **cparams)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
-    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 164, in connect
-    await_only(creator_fn(*arg, **kw)),
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
-    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
-    value = await result
-            ^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 75, in _connect
-    await conn._connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 539, in _connect
-    await self._get_server_information()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 1048, in _get_server_information
-    packet = await self._read_packet()
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 609, in _read_packet
-    packet_header = await self._read_bytes(4)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 665, in _read_bytes
-    raise OperationalError(CR.CR_SERVER_LOST, msg) from e
-sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 12:06:32,288] [INFO] Starting token and email verification
-[2025-08-21 12:06:32,289] [INFO] Validating ID token
-[2025-08-21 12:06:32,290] [INFO] Fetching JWKS from Cognito
-[2025-08-21 12:06:33,210] [WARNING] Token signature expired
-[2025-08-21 12:07:24,298] [INFO] Starting token and email verification
-[2025-08-21 12:07:24,298] [INFO] Validating ID token
-[2025-08-21 12:07:24,298] [INFO] Fetching JWKS from Cognito
-[2025-08-21 12:07:25,097] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 12:07:25,098] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 12:07:25,102] [INFO] Processing individual patient request for site: dev, pid: 2
-[2025-08-21 12:07:28,631] [INFO] Fetching data for single patient 2...
-[2025-08-21 12:07:28,632] [INFO] Fetching enrollment for 1 patients in batch
-[2025-08-21 12:07:28,647] [ERROR] Error in get_batch_enrollment_status: When initializing mapper Mapper[PatientEnrollment(patient_enrollment)], expression 'PatientEnrollment.pid==PatientData.pid' failed to locate a name ("name 'PatientData' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.patient_enrollment_model.PatientEnrollment'> class after both dependent classes have been defined.
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 533, in __call__
-    x = eval(self.arg, globals(), self._dict)
-  File "<string>", line 1, in <module>
-    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=12804, pipe_handle=404)
-                           ^^^^^^^^^^^
-NameError: name 'PatientData' is not defined
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\services\patients\patient_details_service.py", line 470, in get_batch_enrollment_status
-    joinedload(PatientEnrollment.patient),
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\strategy_options.py", line 2435, in joinedload
-    return _generate_from_keys(Load.joinedload, keys, False, kw)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\strategy_options.py", line 2327, in _generate_from_keys
-    lead_element = Load(lead_entity)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\strategy_options.py", line 1013, in __init__
-    insp._post_inspect
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1338, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-                                           ~~~~~~~~~^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
-    self._check_configure()
-    ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
-    _configure_registries({self.registry}, cascade=True)
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4218, in _configure_registries
-    _do_configure_registries(registries, cascade)
-    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4259, in _do_configure_registries
-    mapper._post_configure_properties()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
-    prop.init()
-    ~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 595, in init
-    self.do_init()
-    ~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1654, in do_init
-    self._process_dependent_arguments()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1695, in _process_dependent_arguments
-    rel_arg._resolve_against_registry(self._clsregistry_resolvers[1])
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 270, in _resolve_against_registry
-    self.resolved = clsregistry_resolver(
-                    ~~~~~~~~~~~~~~~~~~~~~
-        attr_value, self.name == "secondary"
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    )()
-    ~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 540, in __call__
-    self._raise_for_name(n.args[0], n)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 501, in _raise_for_name
-    raise exc.InvalidRequestError(
-    ...<5 lines>...
-    ) from err
-sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[PatientEnrollment(patient_enrollment)], expression 'PatientEnrollment.pid==PatientData.pid' failed to locate a name ("name 'PatientData' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.patient_enrollment_model.PatientEnrollment'> class after both dependent classes have been defined.
-[2025-08-21 12:07:30,680] [ERROR] Error in get_single_patient_data_optimized: Invalid format string
-[2025-08-21 12:07:30,680] [ERROR] Error in get_patient_details: Invalid format string
-[2025-08-21 12:07:30,681] [WARNING] Validation error: Invalid format string
-[2025-08-21 12:14:06,782] [INFO] Starting token and email verification
-[2025-08-21 12:14:06,784] [INFO] Validating ID token
-[2025-08-21 12:14:06,785] [INFO] Fetching JWKS from Cognito
-[2025-08-21 12:14:07,630] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 12:14:07,631] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 12:14:07,640] [INFO] Processing individual patient request for site: dev, pid: 2
-[2025-08-21 12:14:11,346] [INFO] Fetching data for single patient 2...
-[2025-08-21 12:14:11,347] [INFO] Fetching enrollment for 1 patients in batch
-[2025-08-21 12:14:11,349] [ERROR] Error in get_batch_enrollment_status: When initializing mapper Mapper[PatientEnrollment(patient_enrollment)], expression 'foreign(PatientEnrollment.pid) == PatientData.pid' failed to locate a name ("name 'PatientData' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.patient_enrollment_model.PatientEnrollment'> class after both dependent classes have been defined.
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 533, in __call__
-    x = eval(self.arg, globals(), self._dict)
-  File "<string>", line 1, in <module>
-    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=12804, pipe_handle=928)
-                                      ^^^^^^^^^^^
-NameError: name 'PatientData' is not defined
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\services\patients\patient_details_service.py", line 470, in get_batch_enrollment_status
-    joinedload(PatientEnrollment.patient),
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\strategy_options.py", line 2435, in joinedload
-    return _generate_from_keys(Load.joinedload, keys, False, kw)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\strategy_options.py", line 2327, in _generate_from_keys
-    lead_element = Load(lead_entity)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\strategy_options.py", line 1013, in __init__
-    insp._post_inspect
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1338, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-                                           ~~~~~~~~~^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
-    self._check_configure()
-    ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
-    _configure_registries({self.registry}, cascade=True)
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4218, in _configure_registries
-    _do_configure_registries(registries, cascade)
-    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4259, in _do_configure_registries
-    mapper._post_configure_properties()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
-    prop.init()
-    ~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 595, in init
-    self.do_init()
-    ~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1654, in do_init
-    self._process_dependent_arguments()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1695, in _process_dependent_arguments
-    rel_arg._resolve_against_registry(self._clsregistry_resolvers[1])
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 270, in _resolve_against_registry
-    self.resolved = clsregistry_resolver(
-                    ~~~~~~~~~~~~~~~~~~~~~
-        attr_value, self.name == "secondary"
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    )()
-    ~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 540, in __call__
-    self._raise_for_name(n.args[0], n)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 501, in _raise_for_name
-    raise exc.InvalidRequestError(
-    ...<5 lines>...
-    ) from err
-sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[PatientEnrollment(patient_enrollment)], expression 'foreign(PatientEnrollment.pid) == PatientData.pid' failed to locate a name ("name 'PatientData' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.patient_enrollment_model.PatientEnrollment'> class after both dependent classes have been defined.
-[2025-08-21 12:14:13,139] [ERROR] Error in get_single_patient_data_optimized: Invalid format string
-[2025-08-21 12:14:13,139] [ERROR] Error in get_patient_details: Invalid format string
-[2025-08-21 12:14:13,139] [WARNING] Validation error: Invalid format string
-[2025-08-21 12:36:53,405] [INFO] Starting token and email verification
-[2025-08-21 12:36:53,406] [INFO] Validating ID token
-[2025-08-21 12:36:53,407] [INFO] Fetching JWKS from Cognito
-[2025-08-21 12:36:54,485] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 12:36:54,486] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 12:36:54,494] [INFO] Processing individual patient request for site: dev, pid: 2
-[2025-08-21 12:37:19,103] [ERROR] Error in get_single_patient_data_optimized: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 12:37:19,104] [ERROR] Error in get_patient_details: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 12:37:19,105] [ERROR] Error fetching patient details: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 657, in _read_bytes
-    data = await self._reader.readexactly(num_bytes)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Python313\Lib\asyncio\streams.py", line 769, in readexactly
-    await self._wait_for_data('readexactly')
-  File "C:\Python313\Lib\asyncio\streams.py", line 539, in _wait_for_data
-    await self._waiter
-  File "C:\Python313\Lib\asyncio\selector_events.py", line 1005, in _read_ready__data_received
-    data = self._sock.recv(self.max_size)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
-    self._dbapi_connection = engine.raw_connection()
-                             ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
-    return self.pool.connect()
-           ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
-    return _ConnectionFairy._checkout(self)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
-    rec = pool._do_get()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
-    return self._create_connection()
-           ~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
-    return _ConnectionRecord(self)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
-    self.__connect()
-    ~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
-    self.dbapi_connection = connection = pool._invoke_creator(self)
-                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
-    return dialect.connect(*cargs, **cparams)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
-    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 164, in connect
-    await_only(creator_fn(*arg, **kw)),
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
-    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
-    value = await result
-            ^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 75, in _connect
-    await conn._connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 539, in _connect
-    await self._get_server_information()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 1048, in _get_server_information
-    packet = await self._read_packet()
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 609, in _read_packet
-    packet_header = await self._read_bytes(4)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 665, in _read_bytes
-    raise OperationalError(CR.CR_SERVER_LOST, msg) from e
-pymysql.err.OperationalError: (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\routers\patient_route.py", line 22, in patient_details_post
-    result = await get_patient_details(payload=payload.dict(), db=db)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\controllers\patient_controller.py", line 56, in get_patient_details
-    result = await get_single_patient_data_optimized(db, event, context, pid)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\services\patients\patient_details_service.py", line 809, in get_single_patient_data_optimized
-    result = await db.execute(text("""
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<4 lines>...
-    """), {"pid": pid})
-    ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 463, in execute
-    result = await greenlet_spawn(
-             ^^^^^^^^^^^^^^^^^^^^^
-    ...<6 lines>...
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 201, in greenlet_spawn
-    result = context.throw(*sys.exc_info())
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
-    return self._execute_internal(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        statement,
-        ^^^^^^^^^^
-    ...<4 lines>...
-        _add_event=_add_event,
-        ^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2241, in _execute_internal
-    conn = self._connection_for_bind(bind)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2110, in _connection_for_bind
-    return trans._connection_for_bind(engine, execution_options)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<string>", line 2, in _connection_for_bind
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
-    ret_value = fn(self, *arg, **kw)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1189, in _connection_for_bind
-    conn = bind.connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3277, in connect
-    return self._connection_cls(self)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
-    Connection._handle_dbapi_exception_noconnection(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        err, dialect, engine
-        ^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2440, in _handle_dbapi_exception_noconnection
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
-    self._dbapi_connection = engine.raw_connection()
-                             ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
-    return self.pool.connect()
-           ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
-    return _ConnectionFairy._checkout(self)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
-    rec = pool._do_get()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
-    return self._create_connection()
-           ~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
-    return _ConnectionRecord(self)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
-    self.__connect()
-    ~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
-    self.dbapi_connection = connection = pool._invoke_creator(self)
-                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
-    return dialect.connect(*cargs, **cparams)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
-    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 164, in connect
-    await_only(creator_fn(*arg, **kw)),
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
-    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
-    value = await result
-            ^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 75, in _connect
-    await conn._connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 539, in _connect
-    await self._get_server_information()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 1048, in _get_server_information
-    packet = await self._read_packet()
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 609, in _read_packet
-    packet_header = await self._read_bytes(4)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 665, in _read_bytes
-    raise OperationalError(CR.CR_SERVER_LOST, msg) from e
-sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 12:37:42,825] [INFO] Starting token and email verification
-[2025-08-21 12:37:42,826] [INFO] Validating ID token
-[2025-08-21 12:37:42,826] [INFO] Fetching JWKS from Cognito
-[2025-08-21 12:37:43,701] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 12:37:43,701] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 12:37:43,702] [INFO] Processing individual patient request for site: dev, pid: 2
-[2025-08-21 12:37:47,286] [INFO] Fetching data for single patient 2...
-[2025-08-21 12:37:47,287] [INFO] Fetching enrollment for 1 patients in batch
-[2025-08-21 12:37:47,294] [ERROR] Error in get_batch_enrollment_status: When initializing mapper Mapper[PatientEnrollment(patient_enrollment)], expression 'foreign(PatientEnrollment.pid) == PatientData.pid' failed to locate a name ("name 'PatientData' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.patient_enrollment_model.PatientEnrollment'> class after both dependent classes have been defined.
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 533, in __call__
-    x = eval(self.arg, globals(), self._dict)
-  File "<string>", line 1, in <module>
-    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=9616, pipe_handle=572)
-                                      ^^^^^^^^^^^
-NameError: name 'PatientData' is not defined
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\services\patients\patient_details_service.py", line 470, in get_batch_enrollment_status
-    joinedload(PatientEnrollment.patient),
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\strategy_options.py", line 2435, in joinedload
-    return _generate_from_keys(Load.joinedload, keys, False, kw)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\strategy_options.py", line 2327, in _generate_from_keys
-    lead_element = Load(lead_entity)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\strategy_options.py", line 1013, in __init__
-    insp._post_inspect
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1338, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-                                           ~~~~~~~~~^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
-    self._check_configure()
-    ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
-    _configure_registries({self.registry}, cascade=True)
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4218, in _configure_registries
-    _do_configure_registries(registries, cascade)
-    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4259, in _do_configure_registries
-    mapper._post_configure_properties()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
-    prop.init()
-    ~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 595, in init
-    self.do_init()
-    ~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1654, in do_init
-    self._process_dependent_arguments()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1695, in _process_dependent_arguments
-    rel_arg._resolve_against_registry(self._clsregistry_resolvers[1])
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 270, in _resolve_against_registry
-    self.resolved = clsregistry_resolver(
-                    ~~~~~~~~~~~~~~~~~~~~~
-        attr_value, self.name == "secondary"
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    )()
-    ~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 540, in __call__
-    self._raise_for_name(n.args[0], n)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 501, in _raise_for_name
-    raise exc.InvalidRequestError(
-    ...<5 lines>...
-    ) from err
-sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[PatientEnrollment(patient_enrollment)], expression 'foreign(PatientEnrollment.pid) == PatientData.pid' failed to locate a name ("name 'PatientData' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.patient_enrollment_model.PatientEnrollment'> class after both dependent classes have been defined.
-[2025-08-21 12:37:49,271] [ERROR] Error in get_single_patient_data_optimized: Invalid format string
-[2025-08-21 12:37:49,272] [ERROR] Error in get_patient_details: Invalid format string
-[2025-08-21 12:37:49,272] [WARNING] Validation error: Invalid format string
-[2025-08-21 12:39:56,250] [INFO] Starting token and email verification
-[2025-08-21 12:39:56,251] [INFO] Validating ID token
-[2025-08-21 12:39:56,252] [INFO] Fetching JWKS from Cognito
-[2025-08-21 12:39:57,040] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 12:39:57,041] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 12:39:57,046] [INFO] Processing individual patient request for site: dev, pid: 2
-[2025-08-21 12:40:00,677] [INFO] Fetching data for single patient 2...
-[2025-08-21 12:40:00,678] [INFO] Fetching enrollment for 1 patients in batch
-[2025-08-21 12:40:00,682] [ERROR] Error in get_batch_enrollment_status: When initializing mapper Mapper[PatientEnrollment(patient_enrollment)], expression 'foreign(PatientEnrollment.pid) == PatientData.pid' failed to locate a name ("name 'PatientData' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.patient_enrollment_model.PatientEnrollment'> class after both dependent classes have been defined.
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 533, in __call__
-    x = eval(self.arg, globals(), self._dict)
-  File "<string>", line 1, in <module>
-    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=9616, pipe_handle=924)
-                                      ^^^^^^^^^^^
-NameError: name 'PatientData' is not defined
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\services\patients\patient_details_service.py", line 470, in get_batch_enrollment_status
-    joinedload(PatientEnrollment.patient),
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\strategy_options.py", line 2435, in joinedload
-    return _generate_from_keys(Load.joinedload, keys, False, kw)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\strategy_options.py", line 2327, in _generate_from_keys
-    lead_element = Load(lead_entity)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\strategy_options.py", line 1013, in __init__
-    insp._post_inspect
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1338, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-                                           ~~~~~~~~~^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
-    self._check_configure()
-    ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
-    _configure_registries({self.registry}, cascade=True)
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4218, in _configure_registries
-    _do_configure_registries(registries, cascade)
-    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4259, in _do_configure_registries
-    mapper._post_configure_properties()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
-    prop.init()
-    ~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 595, in init
-    self.do_init()
-    ~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1654, in do_init
-    self._process_dependent_arguments()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1695, in _process_dependent_arguments
-    rel_arg._resolve_against_registry(self._clsregistry_resolvers[1])
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 270, in _resolve_against_registry
-    self.resolved = clsregistry_resolver(
-                    ~~~~~~~~~~~~~~~~~~~~~
-        attr_value, self.name == "secondary"
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    )()
-    ~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 540, in __call__
-    self._raise_for_name(n.args[0], n)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 501, in _raise_for_name
-    raise exc.InvalidRequestError(
-    ...<5 lines>...
-    ) from err
-sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[PatientEnrollment(patient_enrollment)], expression 'foreign(PatientEnrollment.pid) == PatientData.pid' failed to locate a name ("name 'PatientData' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.patient_enrollment_model.PatientEnrollment'> class after both dependent classes have been defined.
-[2025-08-21 12:40:02,556] [ERROR] Error in get_single_patient_data_optimized: Invalid format string
-[2025-08-21 12:40:02,557] [ERROR] Error in get_patient_details: Invalid format string
-[2025-08-21 12:40:02,557] [WARNING] Validation error: Invalid format string
-[2025-08-21 12:45:29,024] [INFO] Starting token and email verification
-[2025-08-21 12:45:29,025] [INFO] Validating ID token
-[2025-08-21 12:45:29,025] [INFO] Fetching JWKS from Cognito
-[2025-08-21 12:45:29,954] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 12:45:29,955] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 12:45:29,960] [INFO] Processing individual patient request for site: dev, pid: 2
-[2025-08-21 12:45:33,723] [INFO] Fetching data for single patient 2...
-[2025-08-21 12:45:33,724] [INFO] Fetching enrollment for 1 patients in batch
-[2025-08-21 12:45:33,728] [ERROR] Error in get_batch_enrollment_status: When initializing mapper Mapper[PatientEnrollment(patient_enrollment)], expression 'foreign(PatientEnrollment.pid) == PatientData.pid' failed to locate a name ("name 'PatientData' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.patient_enrollment_model.PatientEnrollment'> class after both dependent classes have been defined.
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 533, in __call__
-    x = eval(self.arg, globals(), self._dict)
-  File "<string>", line 1, in <module>
-    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=9616, pipe_handle=832)
-                                      ^^^^^^^^^^^
-NameError: name 'PatientData' is not defined
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\services\patients\patient_details_service.py", line 470, in get_batch_enrollment_status
-    joinedload(PatientEnrollment.patient),
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\strategy_options.py", line 2435, in joinedload
-    return _generate_from_keys(Load.joinedload, keys, False, kw)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\strategy_options.py", line 2327, in _generate_from_keys
-    lead_element = Load(lead_entity)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\strategy_options.py", line 1013, in __init__
-    insp._post_inspect
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1338, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-                                           ~~~~~~~~~^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
-    self._check_configure()
-    ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
-    _configure_registries({self.registry}, cascade=True)
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4218, in _configure_registries
-    _do_configure_registries(registries, cascade)
-    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4259, in _do_configure_registries
-    mapper._post_configure_properties()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
-    prop.init()
-    ~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 595, in init
-    self.do_init()
-    ~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1654, in do_init
-    self._process_dependent_arguments()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1695, in _process_dependent_arguments
-    rel_arg._resolve_against_registry(self._clsregistry_resolvers[1])
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 270, in _resolve_against_registry
-    self.resolved = clsregistry_resolver(
-                    ~~~~~~~~~~~~~~~~~~~~~
-        attr_value, self.name == "secondary"
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    )()
-    ~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 540, in __call__
-    self._raise_for_name(n.args[0], n)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 501, in _raise_for_name
-    raise exc.InvalidRequestError(
-    ...<5 lines>...
-    ) from err
-sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[PatientEnrollment(patient_enrollment)], expression 'foreign(PatientEnrollment.pid) == PatientData.pid' failed to locate a name ("name 'PatientData' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.patient_enrollment_model.PatientEnrollment'> class after both dependent classes have been defined.
-[2025-08-21 12:45:35,668] [ERROR] Error in get_single_patient_data_optimized: Invalid format string
-[2025-08-21 12:45:35,669] [ERROR] Error in get_patient_details: Invalid format string
-[2025-08-21 12:45:35,669] [WARNING] Validation error: Invalid format string
-[2025-08-21 12:50:32,729] [INFO] Starting token and email verification
-[2025-08-21 12:50:32,737] [INFO] Validating ID token
-[2025-08-21 12:50:32,738] [INFO] Fetching JWKS from Cognito
-[2025-08-21 12:50:33,619] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 12:50:33,621] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 12:50:33,639] [INFO] Processing individual patient request for site: dev, pid: 2
-[2025-08-21 12:50:37,245] [INFO] Fetching data for single patient 2...
-[2025-08-21 12:50:37,247] [INFO] Fetching enrollment for 1 patients in batch
-[2025-08-21 12:50:40,415] [ERROR] Error in get_single_patient_data_optimized: Invalid format string
-[2025-08-21 12:50:40,417] [ERROR] Error in get_patient_details: Invalid format string
-[2025-08-21 12:50:40,417] [WARNING] Validation error: Invalid format string
-[2025-08-21 12:53:04,181] [INFO] Starting token and email verification
-[2025-08-21 12:53:04,182] [INFO] Validating ID token
-[2025-08-21 12:53:04,185] [INFO] Fetching JWKS from Cognito
-[2025-08-21 12:53:05,121] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 12:53:05,123] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 12:53:05,128] [INFO] Processing batch request for site: dev, page: 1, page_size: 10
-[2025-08-21 12:53:09,070] [INFO] Fetching data for 10 patients in batch...
-[2025-08-21 12:53:09,071] [INFO] Fetching enrollment for 10 patients in batch
-[2025-08-21 12:53:13,281] [ERROR] Error in get_patients_data_optimized: Invalid format string
-[2025-08-21 12:53:13,283] [ERROR] Error in get_patient_details: Invalid format string
-[2025-08-21 12:53:13,284] [WARNING] Validation error: Invalid format string
-[2025-08-21 12:55:47,785] [INFO] Starting token and email verification
-[2025-08-21 12:55:47,786] [INFO] Validating ID token
-[2025-08-21 12:55:47,786] [INFO] Fetching JWKS from Cognito
-[2025-08-21 12:55:48,555] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 12:55:48,556] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 12:55:48,559] [INFO] Processing batch request for site: dev, page: 1, page_size: 10
-[2025-08-21 12:55:52,332] [INFO] Fetching data for 10 patients in batch...
-[2025-08-21 12:55:52,332] [INFO] Fetching enrollment for 10 patients in batch
-[2025-08-21 12:55:56,269] [ERROR] Error in get_patients_data_optimized: Invalid format string
-[2025-08-21 12:55:56,270] [ERROR] Error in get_patient_details: Invalid format string
-[2025-08-21 12:55:56,270] [WARNING] Validation error: Invalid format string
-[2025-08-21 13:07:34,276] [INFO] Starting token and email verification
-[2025-08-21 13:07:34,277] [INFO] Validating ID token
-[2025-08-21 13:07:34,277] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:07:35,240] [WARNING] Token signature expired
-[2025-08-21 13:08:17,859] [INFO] Starting token and email verification
-[2025-08-21 13:08:17,859] [INFO] Validating ID token
-[2025-08-21 13:08:17,860] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:08:18,551] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:08:18,552] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:08:18,578] [INFO] Processing batch request for site: dev, page: 1, page_size: 10
-[2025-08-21 13:08:20,606] [ERROR] Error in get_patients_data_optimized: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '127.0.0.1'")
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 13:08:20,608] [ERROR] Error in get_patient_details: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '127.0.0.1'")
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 13:08:20,609] [ERROR] Error fetching patient details: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '127.0.0.1'")
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 527, in _connect
-    self._reader, self._writer = await \
-                                 ^^^^^^^
-    ...<4 lines>...
-            timeout=self.connect_timeout)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
-    return await fut
-           ^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 88, in _open_connection
-    transport, _ = await loop.create_connection(
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        lambda: protocol, host, port, **kwds)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Python313\Lib\asyncio\base_events.py", line 1160, in create_connection
-    raise exceptions[0]
-  File "C:\Python313\Lib\asyncio\base_events.py", line 1135, in create_connection
-    sock = await self._connect_sock(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-        exceptions, addrinfo, laddr_infos)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Python313\Lib\asyncio\base_events.py", line 1038, in _connect_sock
-    await self.sock_connect(sock, address)
-  File "C:\Python313\Lib\asyncio\selector_events.py", line 641, in sock_connect
-    return await fut
-           ^^^^^^^^^
-  File "C:\Python313\Lib\asyncio\selector_events.py", line 681, in _sock_connect_cb
-    raise OSError(err, f'Connect call failed {address}')
-ConnectionRefusedError: [Errno 10061] Connect call failed ('127.0.0.1', 3307)
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
-    self._dbapi_connection = engine.raw_connection()
-                             ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
-    return self.pool.connect()
-           ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
-    return _ConnectionFairy._checkout(self)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
-    rec = pool._do_get()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
-    return self._create_connection()
-           ~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
-    return _ConnectionRecord(self)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
-    self.__connect()
-    ~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
-    self.dbapi_connection = connection = pool._invoke_creator(self)
-                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
-    return dialect.connect(*cargs, **cparams)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
-    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 164, in connect
-    await_only(creator_fn(*arg, **kw)),
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
-    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
-    value = await result
-            ^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 75, in _connect
-    await conn._connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 563, in _connect
-    raise OperationalError(
-    ...<2 lines>...
-    ) from e
-pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1'")
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\routers\patient_route.py", line 22, in patient_details_post
-    result = await get_patient_details(payload=payload.dict(), db=db)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\controllers\patient_controller.py", line 80, in get_patient_details
-    result = await get_patients_data_optimized(db, event, context, page, page_size)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\services\patients\patient_details_service.py", line 606, in get_patients_data_optimized
-    result = await db.execute(text("SELECT COUNT(*) as total FROM patient_data"))
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 463, in execute
-    result = await greenlet_spawn(
-             ^^^^^^^^^^^^^^^^^^^^^
-    ...<6 lines>...
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 201, in greenlet_spawn
-    result = context.throw(*sys.exc_info())
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
-    return self._execute_internal(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        statement,
-        ^^^^^^^^^^
-    ...<4 lines>...
-        _add_event=_add_event,
-        ^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2241, in _execute_internal
-    conn = self._connection_for_bind(bind)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2110, in _connection_for_bind
-    return trans._connection_for_bind(engine, execution_options)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<string>", line 2, in _connection_for_bind
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
-    ret_value = fn(self, *arg, **kw)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1189, in _connection_for_bind
-    conn = bind.connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3277, in connect
-    return self._connection_cls(self)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
-    Connection._handle_dbapi_exception_noconnection(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        err, dialect, engine
-        ^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2440, in _handle_dbapi_exception_noconnection
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
-    self._dbapi_connection = engine.raw_connection()
-                             ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
-    return self.pool.connect()
-           ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
-    return _ConnectionFairy._checkout(self)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
-    rec = pool._do_get()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
-    return self._create_connection()
-           ~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
-    return _ConnectionRecord(self)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
-    self.__connect()
-    ~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
-    self.dbapi_connection = connection = pool._invoke_creator(self)
-                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
-    return dialect.connect(*cargs, **cparams)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
-    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 164, in connect
-    await_only(creator_fn(*arg, **kw)),
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
-    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
-    value = await result
-            ^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 75, in _connect
-    await conn._connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 563, in _connect
-    raise OperationalError(
-    ...<2 lines>...
-    ) from e
-sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '127.0.0.1'")
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 13:08:36,711] [INFO] Starting token and email verification
-[2025-08-21 13:08:36,711] [INFO] Validating ID token
-[2025-08-21 13:08:36,711] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:08:37,390] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:08:37,390] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:08:37,391] [INFO] Processing batch request for site: dev, page: 1, page_size: 10
-[2025-08-21 13:08:40,840] [INFO] Fetching data for 10 patients in batch...
-[2025-08-21 13:08:40,840] [INFO] Fetching enrollment for 10 patients in batch
-[2025-08-21 13:08:55,189] [INFO] Patient details fetched successfully for email: prakash@zeoner.com
-[2025-08-21 13:08:55,196] [ERROR] Error fetching patient details: Object of type datetime is not JSON serializable
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\routers\patient_route.py", line 24, in patient_details_post
-    return create_success_response(result, "Patient details fetched successfully")
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\response_utils.py", line 31, in create_success_response
-    return JSONResponse(status_code=status_code, content=content)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\starlette\responses.py", line 190, in __init__
-    super().__init__(content, status_code, headers, media_type, background)
-    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\starlette\responses.py", line 47, in __init__
-    self.body = self.render(content)
-                ~~~~~~~~~~~^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\starlette\responses.py", line 193, in render
-    return json.dumps(
-           ~~~~~~~~~~^
-        content,
-        ^^^^^^^^
-    ...<3 lines>...
-        separators=(",", ":"),
-        ^^^^^^^^^^^^^^^^^^^^^^
-    ).encode("utf-8")
-    ^
-  File "C:\Python313\Lib\json\__init__.py", line 238, in dumps
-    **kw).encode(obj)
-          ~~~~~~^^^^^
-  File "C:\Python313\Lib\json\encoder.py", line 200, in encode
-    chunks = self.iterencode(o, _one_shot=True)
-  File "C:\Python313\Lib\json\encoder.py", line 261, in iterencode
-    return _iterencode(o, 0)
-  File "C:\Python313\Lib\json\encoder.py", line 180, in default
-    raise TypeError(f'Object of type {o.__class__.__name__} '
-                    f'is not JSON serializable')
-TypeError: Object of type datetime is not JSON serializable
-[2025-08-21 13:20:50,320] [INFO] Starting token and email verification
-[2025-08-21 13:20:50,331] [INFO] Validating ID token
-[2025-08-21 13:20:50,342] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:20:51,276] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:20:51,281] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:20:51,302] [INFO] Processing batch request for site: dev, page: 1, page_size: 10
-[2025-08-21 13:20:54,767] [INFO] Fetching data for 10 patients in batch...
-[2025-08-21 13:20:54,769] [INFO] Fetching enrollment for 10 patients in batch
-[2025-08-21 13:21:09,197] [INFO] Patient details fetched successfully for email: prakash@zeoner.com
-[2025-08-21 13:21:09,203] [ERROR] Error fetching patient details: Object of type Decimal is not JSON serializable
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\routers\patient_route.py", line 24, in patient_details_post
-    return create_success_response(result, "Patient details fetched successfully")
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\response_utils.py", line 31, in create_success_response
-    return JSONResponse(status_code=status_code, content=content)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\starlette\responses.py", line 190, in __init__
-    super().__init__(content, status_code, headers, media_type, background)
-    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\starlette\responses.py", line 47, in __init__
-    self.body = self.render(content)
-                ~~~~~~~~~~~^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\starlette\responses.py", line 193, in render
-    return json.dumps(
-           ~~~~~~~~~~^
-        content,
-        ^^^^^^^^
-    ...<3 lines>...
-        separators=(",", ":"),
-        ^^^^^^^^^^^^^^^^^^^^^^
-    ).encode("utf-8")
-    ^
-  File "C:\Python313\Lib\json\__init__.py", line 238, in dumps
-    **kw).encode(obj)
-          ~~~~~~^^^^^
-  File "C:\Python313\Lib\json\encoder.py", line 200, in encode
-    chunks = self.iterencode(o, _one_shot=True)
-  File "C:\Python313\Lib\json\encoder.py", line 261, in iterencode
-    return _iterencode(o, 0)
-  File "C:\Python313\Lib\json\encoder.py", line 180, in default
-    raise TypeError(f'Object of type {o.__class__.__name__} '
-                    f'is not JSON serializable')
-TypeError: Object of type Decimal is not JSON serializable
-[2025-08-21 13:27:07,190] [INFO] Starting token and email verification
-[2025-08-21 13:27:07,193] [INFO] Validating ID token
-[2025-08-21 13:27:07,194] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:27:08,441] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:27:08,442] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:27:08,456] [INFO] Processing batch request for site: dev, page: 1, page_size: 10
-[2025-08-21 13:27:11,985] [INFO] Fetching data for 10 patients in batch...
-[2025-08-21 13:27:11,986] [INFO] Fetching enrollment for 10 patients in batch
-[2025-08-21 13:27:26,601] [INFO] Patient details fetched successfully for email: prakash@zeoner.com
-[2025-08-21 13:27:55,037] [INFO] Starting token and email verification
-[2025-08-21 13:27:55,042] [INFO] Validating ID token
-[2025-08-21 13:27:55,046] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:27:55,765] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:27:55,766] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:27:55,768] [INFO] Processing batch request for site: dev, page: 1, page_size: 10
-[2025-08-21 13:27:56,587] [INFO] Fetching data for 10 patients in batch...
-[2025-08-21 13:27:56,587] [INFO] Fetching enrollment for 10 patients in batch
-[2025-08-21 13:28:10,950] [INFO] Patient details fetched successfully for email: prakash@zeoner.com
-[2025-08-21 13:36:54,209] [INFO] Starting token and email verification
-[2025-08-21 13:36:54,210] [INFO] Validating ID token
-[2025-08-21 13:36:54,211] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:36:54,989] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:36:54,991] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:36:54,994] [INFO] Processing batch request for site: dev, page: 1, page_size: 10
-[2025-08-21 13:36:58,516] [INFO] Fetching data for 10 patients in batch...
-[2025-08-21 13:36:58,517] [INFO] Fetching enrollment for 10 patients in batch
-[2025-08-21 13:37:13,125] [INFO] Patient details fetched successfully for email: prakash@zeoner.com
-[2025-08-21 13:41:21,407] [INFO] Starting token and email verification
-[2025-08-21 13:41:21,408] [INFO] Validating ID token
-[2025-08-21 13:41:21,408] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:41:22,178] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:41:22,179] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:41:22,187] [INFO] Processing batch request for site: dev, page: 1, page_size: 10
-[2025-08-21 13:41:22,190] [INFO] Patient details fetched successfully for email: prakash@zeoner.com
-[2025-08-21 13:42:48,204] [INFO] Starting token and email verification
-[2025-08-21 13:42:48,207] [INFO] Validating ID token
-[2025-08-21 13:42:48,209] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:42:49,073] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:42:49,073] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:42:49,075] [INFO] payload: {'site': 'dev', 'page': 1, 'page_size': 10, 'program_id': None}
-[2025-08-21 13:42:49,076] [INFO] Processing batch request for site: dev, page: 1, page_size: 10
-[2025-08-21 13:42:49,076] [INFO] Patient details fetched successfully for email: prakash@zeoner.com
-[2025-08-21 13:44:35,976] [INFO] Starting token and email verification
-[2025-08-21 13:44:35,977] [INFO] Validating ID token
-[2025-08-21 13:44:35,977] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:44:36,717] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:44:36,718] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:49:52,861] [INFO] Starting token and email verification
-[2025-08-21 13:49:52,862] [INFO] Validating ID token
-[2025-08-21 13:49:52,862] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:49:53,640] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:49:53,640] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:49:53,644] [INFO] payload: {'site': 'dev', 'pid': None, 'page': 1, 'page_size': 10, 'program_id': None}
-[2025-08-21 13:49:53,645] [INFO] Processing batch request for site: dev, page: 1, page_size: 10
-[2025-08-21 13:49:53,645] [INFO] Patient details fetched successfully for email: prakash@zeoner.com
-[2025-08-21 13:50:05,643] [INFO] Starting token and email verification
-[2025-08-21 13:50:05,644] [INFO] Validating ID token
-[2025-08-21 13:50:05,645] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:50:06,336] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:50:06,337] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:50:06,338] [INFO] payload: {'site': 'dev', 'pid': None, 'page': 1, 'page_size': 10, 'program_id': None}
-[2025-08-21 13:50:06,339] [INFO] Processing batch request for site: dev, page: 1, page_size: 10
-[2025-08-21 13:50:06,340] [INFO] Patient details fetched successfully for email: prakash@zeoner.com
-[2025-08-21 13:50:32,415] [INFO] Starting token and email verification
-[2025-08-21 13:50:32,415] [INFO] Validating ID token
-[2025-08-21 13:50:32,416] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:50:33,104] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:50:33,105] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:50:33,110] [INFO] payload: {'site': 'dev', 'pid': 1, 'page': 1, 'page_size': 10, 'program_id': None}
-[2025-08-21 13:50:33,111] [INFO] Processing individual patient request for site: dev, pid: 1
-[2025-08-21 13:50:33,111] [INFO] Patient details fetched successfully for email: prakash@zeoner.com
-[2025-08-21 13:50:58,866] [INFO] Starting token and email verification
-[2025-08-21 13:50:58,867] [INFO] Validating ID token
-[2025-08-21 13:50:58,868] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:50:59,596] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:50:59,597] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:50:59,601] [INFO] payload: {'site': 'dev', 'pid': 1, 'page': 1, 'page_size': 10, 'program_id': None}
-[2025-08-21 13:50:59,603] [INFO] Processing individual patient request for site: dev, pid: 1
-[2025-08-21 13:51:21,308] [ERROR] Error in get_single_patient_data_optimized: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 13:51:21,309] [ERROR] Error in get_patient_details: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 13:51:21,310] [ERROR] Error fetching patient details: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 657, in _read_bytes
-    data = await self._reader.readexactly(num_bytes)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Python313\Lib\asyncio\streams.py", line 769, in readexactly
-    await self._wait_for_data('readexactly')
-  File "C:\Python313\Lib\asyncio\streams.py", line 539, in _wait_for_data
-    await self._waiter
-  File "C:\Python313\Lib\asyncio\selector_events.py", line 1005, in _read_ready__data_received
-    data = self._sock.recv(self.max_size)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
-    self._dbapi_connection = engine.raw_connection()
-                             ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
-    return self.pool.connect()
-           ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
-    return _ConnectionFairy._checkout(self)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
-    rec = pool._do_get()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
-    return self._create_connection()
-           ~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
-    return _ConnectionRecord(self)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
-    self.__connect()
-    ~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
-    self.dbapi_connection = connection = pool._invoke_creator(self)
-                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
-    return dialect.connect(*cargs, **cparams)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
-    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 164, in connect
-    await_only(creator_fn(*arg, **kw)),
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
-    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
-    value = await result
-            ^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 75, in _connect
-    await conn._connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 539, in _connect
-    await self._get_server_information()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 1048, in _get_server_information
-    packet = await self._read_packet()
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 609, in _read_packet
-    packet_header = await self._read_bytes(4)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 665, in _read_bytes
-    raise OperationalError(CR.CR_SERVER_LOST, msg) from e
-pymysql.err.OperationalError: (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\routers\patient_route.py", line 22, in patient_details_post
-    result = await get_patient_details(payload=payload.dict(), db=db)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\controllers\patient_controller.py", line 52, in get_patient_details
-    result = await get_single_patient_data_optimized(db, event, context, pid)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\services\patients\patient_details_service.py", line 848, in get_single_patient_data_optimized
-    result = await db.execute(text("""
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<4 lines>...
-    """), {"pid": pid})
-    ^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 463, in execute
-    result = await greenlet_spawn(
-             ^^^^^^^^^^^^^^^^^^^^^
-    ...<6 lines>...
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 201, in greenlet_spawn
-    result = context.throw(*sys.exc_info())
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
-    return self._execute_internal(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        statement,
-        ^^^^^^^^^^
-    ...<4 lines>...
-        _add_event=_add_event,
-        ^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2241, in _execute_internal
-    conn = self._connection_for_bind(bind)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2110, in _connection_for_bind
-    return trans._connection_for_bind(engine, execution_options)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<string>", line 2, in _connection_for_bind
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
-    ret_value = fn(self, *arg, **kw)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1189, in _connection_for_bind
-    conn = bind.connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3277, in connect
-    return self._connection_cls(self)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
-    Connection._handle_dbapi_exception_noconnection(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        err, dialect, engine
-        ^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2440, in _handle_dbapi_exception_noconnection
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
-    self._dbapi_connection = engine.raw_connection()
-                             ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
-    return self.pool.connect()
-           ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
-    return _ConnectionFairy._checkout(self)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
-    rec = pool._do_get()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
-    return self._create_connection()
-           ~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
-    return _ConnectionRecord(self)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
-    self.__connect()
-    ~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
-    self.dbapi_connection = connection = pool._invoke_creator(self)
-                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
-    return dialect.connect(*cargs, **cparams)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
-    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 164, in connect
-    await_only(creator_fn(*arg, **kw)),
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
-    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
-    value = await result
-            ^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 75, in _connect
-    await conn._connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 539, in _connect
-    await self._get_server_information()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 1048, in _get_server_information
-    packet = await self._read_packet()
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 609, in _read_packet
-    packet_header = await self._read_bytes(4)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 665, in _read_bytes
-    raise OperationalError(CR.CR_SERVER_LOST, msg) from e
-sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 13:51:42,534] [INFO] Starting token and email verification
-[2025-08-21 13:51:42,535] [INFO] Validating ID token
-[2025-08-21 13:51:42,535] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:51:43,228] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:51:43,229] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:51:43,230] [INFO] payload: {'site': 'dev', 'pid': 1, 'page': 1, 'page_size': 10, 'program_id': None}
-[2025-08-21 13:51:43,230] [INFO] Processing individual patient request for site: dev, pid: 1
-[2025-08-21 13:51:46,312] [ERROR] Error in get_patient_details: NotFoundException.__init__() got an unexpected keyword argument 'status_code'
-[2025-08-21 13:51:46,313] [ERROR] Error fetching patient details: NotFoundException.__init__() got an unexpected keyword argument 'status_code'
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\routers\patient_route.py", line 22, in patient_details_post
-    result = await get_patient_details(payload=payload.dict(), db=db)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\controllers\patient_controller.py", line 55, in get_patient_details
-    raise NotFoundException(status_code=404, detail=f"Patient with ID {pid} not found")
-          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: NotFoundException.__init__() got an unexpected keyword argument 'status_code'
-[2025-08-21 13:52:35,391] [INFO] Starting token and email verification
-[2025-08-21 13:52:35,393] [INFO] Validating ID token
-[2025-08-21 13:52:35,393] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:52:36,107] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:52:36,113] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:52:36,122] [INFO] payload: {'site': 'dev', 'pid': 1, 'page': 1, 'page_size': 10, 'program_id': None}
-[2025-08-21 13:52:36,128] [INFO] Processing individual patient request for site: dev, pid: 1
-[2025-08-21 13:52:39,277] [ERROR] Error in get_patient_details: NotFoundException.__init__() got an unexpected keyword argument 'status_code'
-[2025-08-21 13:52:39,278] [ERROR] Error fetching patient details: NotFoundException.__init__() got an unexpected keyword argument 'status_code'
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\routers\patient_route.py", line 22, in patient_details_post
-    result = await get_patient_details(payload=payload.dict(), db=db)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\controllers\patient_controller.py", line 55, in get_patient_details
-    raise NotFoundException(status_code=404, detail=f"Patient with ID {pid} not found")
-          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: NotFoundException.__init__() got an unexpected keyword argument 'status_code'
-[2025-08-21 13:53:07,695] [INFO] Starting token and email verification
-[2025-08-21 13:53:07,695] [INFO] Validating ID token
-[2025-08-21 13:53:07,696] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:53:08,396] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:53:08,397] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:53:08,398] [INFO] payload: {'site': 'dev', 'pid': None, 'page': 1, 'page_size': 10, 'program_id': None}
-[2025-08-21 13:53:08,399] [INFO] Processing batch request for site: dev, page: 1, page_size: 10
-[2025-08-21 13:53:09,258] [INFO] Fetching data for 10 patients in batch...
-[2025-08-21 13:53:09,259] [INFO] Fetching enrollment for 10 patients in batch
-[2025-08-21 13:53:23,552] [INFO] Patient details fetched successfully for email: prakash@zeoner.com
-[2025-08-21 13:53:35,281] [INFO] Starting token and email verification
-[2025-08-21 13:53:35,282] [INFO] Validating ID token
-[2025-08-21 13:53:35,282] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:53:35,980] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:53:35,981] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:53:35,983] [INFO] payload: {'site': 'dev', 'pid': None, 'page': 1, 'page_size': 10, 'program_id': None}
-[2025-08-21 13:53:35,983] [INFO] Processing batch request for site: dev, page: 1, page_size: 10
-[2025-08-21 13:53:36,820] [INFO] Fetching data for 10 patients in batch...
-[2025-08-21 13:53:36,821] [INFO] Fetching enrollment for 10 patients in batch
-[2025-08-21 13:53:50,985] [INFO] Patient details fetched successfully for email: prakash@zeoner.com
-[2025-08-21 13:55:41,131] [INFO] Starting token and email verification
-[2025-08-21 13:55:41,138] [INFO] Validating ID token
-[2025-08-21 13:55:41,146] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:55:41,883] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:55:41,884] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:55:41,887] [INFO] payload: {'site': 'dev', 'pid': 2, 'page': 1, 'page_size': 10, 'program_id': None}
-[2025-08-21 13:55:41,889] [INFO] Processing individual patient request for site: dev, pid: 2
-[2025-08-21 13:55:44,988] [INFO] Fetching data for single patient 2...
-[2025-08-21 13:55:44,989] [INFO] Fetching enrollment for 1 patients in batch
-[2025-08-21 13:55:49,012] [ERROR] Error in get_patient_details: 'patients'
-[2025-08-21 13:55:49,014] [ERROR] Error fetching patient details: 'patients'
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\routers\patient_route.py", line 22, in patient_details_post
-    result = await get_patient_details(payload=payload.dict(), db=db)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\controllers\patient_controller.py", line 54, in get_patient_details
-    if not result['patients']:
-           ~~~~~~^^^^^^^^^^^^
-KeyError: 'patients'
-[2025-08-21 13:56:37,418] [INFO] Starting token and email verification
-[2025-08-21 13:56:37,419] [INFO] Validating ID token
-[2025-08-21 13:56:37,421] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:56:38,160] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:56:38,166] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:56:38,168] [INFO] payload: {'site': 'dev', 'pid': 2, 'page': 1, 'page_size': 10, 'program_id': None}
-[2025-08-21 13:56:38,168] [INFO] Processing individual patient request for site: dev, pid: 2
-[2025-08-21 13:56:41,344] [INFO] Fetching data for single patient 2...
-[2025-08-21 13:56:41,344] [INFO] Fetching enrollment for 1 patients in batch
-[2025-08-21 13:56:45,434] [INFO] Patient details fetched successfully for email: prakash@zeoner.com
-[2025-08-21 13:57:02,407] [INFO] Starting token and email verification
-[2025-08-21 13:57:02,408] [INFO] Validating ID token
-[2025-08-21 13:57:02,408] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:57:03,103] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:57:03,103] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:57:03,104] [INFO] payload: {'site': 'dev', 'pid': None, 'page': 1, 'page_size': 10, 'program_id': None}
-[2025-08-21 13:57:03,105] [INFO] Processing batch request for site: dev, page: 1, page_size: 10
-[2025-08-21 13:57:03,940] [INFO] Fetching data for 10 patients in batch...
-[2025-08-21 13:57:03,940] [INFO] Fetching enrollment for 10 patients in batch
-[2025-08-21 13:57:18,206] [INFO] Patient details fetched successfully for email: prakash@zeoner.com
-[2025-08-21 13:57:29,200] [INFO] Starting token and email verification
-[2025-08-21 13:57:29,200] [INFO] Validating ID token
-[2025-08-21 13:57:29,200] [INFO] Fetching JWKS from Cognito
-[2025-08-21 13:57:29,888] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 13:57:29,889] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 13:57:29,889] [INFO] payload: {'site': 'dev', 'pid': 2, 'page': 1, 'page_size': 10, 'program_id': None}
-[2025-08-21 13:57:29,890] [INFO] Processing individual patient request for site: dev, pid: 2
-[2025-08-21 13:57:30,451] [INFO] Fetching data for single patient 2...
-[2025-08-21 13:57:30,452] [INFO] Fetching enrollment for 1 patients in batch
-[2025-08-21 13:57:34,384] [INFO] Patient details fetched successfully for email: prakash@zeoner.com
-[2025-08-21 15:16:58,279] [INFO] Starting token and email verification
-[2025-08-21 15:16:58,293] [INFO] Validating ID token
-[2025-08-21 15:16:58,295] [INFO] Fetching JWKS from Cognito
-[2025-08-21 15:16:59,403] [WARNING] Token signature expired
-[2025-08-21 15:17:53,835] [INFO] Starting token and email verification
-[2025-08-21 15:17:53,837] [INFO] Validating ID token
-[2025-08-21 15:17:53,837] [INFO] Fetching JWKS from Cognito
-[2025-08-21 15:17:54,671] [WARNING] 401: Signature verification failed
-[2025-08-21 15:17:58,452] [INFO] Starting token and email verification
-[2025-08-21 15:17:58,453] [INFO] Validating ID token
-[2025-08-21 15:17:58,453] [INFO] Fetching JWKS from Cognito
-[2025-08-21 15:17:59,290] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 15:17:59,290] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 15:17:59,356] [INFO] payload: {'site': 'dev', 'pid': None, 'page': 2, 'page_size': 10, 'program_id': None}
-[2025-08-21 15:17:59,357] [INFO] Processing batch request for site: dev, page: 2, page_size: 10
-[2025-08-21 15:18:19,559] [ERROR] Error in get_patients_data_optimized: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 15:18:19,560] [ERROR] Error in get_patient_details: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 15:18:19,560] [ERROR] Error fetching patient details: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 657, in _read_bytes
-    data = await self._reader.readexactly(num_bytes)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Python313\Lib\asyncio\streams.py", line 769, in readexactly
-    await self._wait_for_data('readexactly')
-  File "C:\Python313\Lib\asyncio\streams.py", line 539, in _wait_for_data
-    await self._waiter
-  File "C:\Python313\Lib\asyncio\selector_events.py", line 1005, in _read_ready__data_received
-    data = self._sock.recv(self.max_size)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
-    self._dbapi_connection = engine.raw_connection()
-                             ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
-    return self.pool.connect()
-           ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
-    return _ConnectionFairy._checkout(self)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
-    rec = pool._do_get()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
-    return self._create_connection()
-           ~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
-    return _ConnectionRecord(self)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
-    self.__connect()
-    ~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
-    self.dbapi_connection = connection = pool._invoke_creator(self)
-                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
-    return dialect.connect(*cargs, **cparams)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
-    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 164, in connect
-    await_only(creator_fn(*arg, **kw)),
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
-    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
-    value = await result
-            ^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 75, in _connect
-    await conn._connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 539, in _connect
-    await self._get_server_information()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 1048, in _get_server_information
-    packet = await self._read_packet()
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 609, in _read_packet
-    packet_header = await self._read_bytes(4)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 665, in _read_bytes
-    raise OperationalError(CR.CR_SERVER_LOST, msg) from e
-pymysql.err.OperationalError: (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\routers\patient_route.py", line 22, in patient_details_post
-    result = await get_patient_details(payload=payload.dict(), db=db)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\controllers\patient_controller.py", line 76, in get_patient_details
-    result = await get_patients_data_optimized(db, event, context, page, page_size)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\services\patients\patient_details_service.py", line 614, in get_patients_data_optimized
-    result = await db.execute(text("SELECT COUNT(*) as total FROM patient_data"))
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 463, in execute
-    result = await greenlet_spawn(
-             ^^^^^^^^^^^^^^^^^^^^^
-    ...<6 lines>...
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 201, in greenlet_spawn
-    result = context.throw(*sys.exc_info())
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
-    return self._execute_internal(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        statement,
-        ^^^^^^^^^^
-    ...<4 lines>...
-        _add_event=_add_event,
-        ^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2241, in _execute_internal
-    conn = self._connection_for_bind(bind)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2110, in _connection_for_bind
-    return trans._connection_for_bind(engine, execution_options)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<string>", line 2, in _connection_for_bind
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
-    ret_value = fn(self, *arg, **kw)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1189, in _connection_for_bind
-    conn = bind.connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3277, in connect
-    return self._connection_cls(self)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
-    Connection._handle_dbapi_exception_noconnection(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        err, dialect, engine
-        ^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2440, in _handle_dbapi_exception_noconnection
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
-    self._dbapi_connection = engine.raw_connection()
-                             ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
-    return self.pool.connect()
-           ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
-    return _ConnectionFairy._checkout(self)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
-    rec = pool._do_get()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
-    return self._create_connection()
-           ~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
-    return _ConnectionRecord(self)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
-    self.__connect()
-    ~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
-    self.dbapi_connection = connection = pool._invoke_creator(self)
-                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
-    return dialect.connect(*cargs, **cparams)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
-    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\dialects\mysql\aiomysql.py", line 164, in connect
-    await_only(creator_fn(*arg, **kw)),
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
-    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
-    value = await result
-            ^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 75, in _connect
-    await conn._connect()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 539, in _connect
-    await self._get_server_information()
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 1048, in _get_server_information
-    packet = await self._read_packet()
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 609, in _read_packet
-    packet_header = await self._read_bytes(4)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\aiomysql\connection.py", line 665, in _read_bytes
-    raise OperationalError(CR.CR_SERVER_LOST, msg) from e
-sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10054] An existing connection was forcibly closed by the remote host)')
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-[2025-08-21 15:18:51,540] [INFO] Starting token and email verification
-[2025-08-21 15:18:51,540] [INFO] Validating ID token
-[2025-08-21 15:18:51,541] [INFO] Fetching JWKS from Cognito
-[2025-08-21 15:18:52,429] [INFO] Token validated for email: prakash@zeoner.com
-[2025-08-21 15:18:52,429] [INFO] Email verified successfully: prakash@zeoner.com
-[2025-08-21 15:18:52,430] [INFO] payload: {'site': 'dev', 'pid': None, 'page': 2, 'page_size': 10, 'program_id': None}
-[2025-08-21 15:18:52,431] [INFO] Processing batch request for site: dev, page: 2, page_size: 10
-[2025-08-21 15:18:55,850] [INFO] Fetching data for 10 patients in batch...
-[2025-08-21 15:18:55,851] [INFO] Fetching enrollment for 10 patients in batch
-[2025-08-21 15:19:05,051] [INFO] Patient details fetched successfully for email: prakash@zeoner.com
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 66, in validate_id_token
+    payload = verify_signature(id_token, jwks_keys)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\app\utils\auth_utils.py", line 41, in verify_signature
+    headers = jwt.get_unverified_header(id_token)
+  File "C:\Users\arunk\OneDrive\Desktop\new_folder\refresh_health\venv\Lib\site-packages\jose\jwt.py", line 202, in get_unverified_header
+    raise JWTError("Error decoding token headers.")
+jose.exceptions.JWTError: Error decoding token headers.
+[2025-08-22 13:16:37,269] [INFO] Token received: gIkTNkQ3lW7Nyx5x1cO3uI9MH3-pcg27DO9Vc9E0gniTkJLJ..., site: dev
+[2025-08-22 13:16:40,028] [INFO] Authenticating with Cognito
+[2025-08-22 13:16:42,550] [INFO] Cognito authentication successful
+[2025-08-22 13:16:43,066] [INFO] Starting token and email verification
+[2025-08-22 13:16:43,067] [WARNING] Malformed Authorization header
