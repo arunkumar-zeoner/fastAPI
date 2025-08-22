@@ -42,7 +42,7 @@ jobs:
 
     - name: Run pytest tests
       env:
-        DATABASE_URL: postgresql://test_user:test_password@localhost:5432/test_db
+        DATABASE_URL: mysql+aiomysql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@${{ secrets.DB_HOST }}:${{ secrets.DB_PORT }}/ ${{ secrets.DB_NAME }}
         AWS_REGION: us-east-1
         COGNITO_USER_POOL_ID: dummy
         COGNITO_CLIENT_ID: dummy
